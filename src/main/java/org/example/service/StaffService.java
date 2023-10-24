@@ -10,4 +10,6 @@ public interface StaffService {
     List<Guest> viewAllGuest();
     Guest checkOut(Guest guest);
 
+    Staff addStaff(Staff staff);
+    int allocateRoomNumber() throws Exception;
 }
