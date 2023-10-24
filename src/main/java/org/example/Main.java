@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.DTOs.StaffDTOS;
 import org.example.entities.Guest;
 import org.example.entities.Staff;
 import org.example.enums.Role;
@@ -13,7 +14,15 @@ import java.util.Random;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) throws Exception {
+
+    public void setUp() throws Exception {
+        StaffDTOS staffDTOS = new StaffDTOS();
+        staffDTOS.setName("Gadibia Dizsartz");
+        staffDTOS.setEmail("Diz@gmail.com");
+        staffDTOS.setRole("ACCOUNTANT");
+        staffDTOS.setSalary(Staff.SALARY_3);
+        Staff staff3 = new Staff(staffDTOS);
+
         Staff staff = Staff.builder()
                 .role(Role.SUPERVISOR)
                 .staffSalary(Staff.SALARY_2).build();
@@ -22,6 +31,7 @@ public class Main {
         StaffServiceImpl staffService = new StaffServiceImpl();
         staffService.addStaff(staff1);
         staffService.addStaff(staff);
+        staffService.addStaff(staff3);
         System.out.println(StaffServiceImpl.allStaffs);
         Guest guest = Guest.builder()
                 .payment(RoomTypePayment.L_20000)
@@ -50,5 +60,5 @@ public class Main {
         System.out.println(staffService.checkOut(1));
         System.out.println(staffService.viewAllGuest());
         System.out.println(guest.getPayments());
-            }
-}
+    }
+   }
